@@ -12,7 +12,7 @@ Python package installation of `nltk` is slow. First call to the index route wil
 
 ## UI
 
-At the frontend the `Randomise Tariffs` button fetches a new index (which creates a new set of countries, companies and forecasts), and a `Group Forecasts` toggle which routes between two pages, one where every company in a country has it's forecasts grouped into one plot, and another where companies' forecasts are displayed as thumbnail plots. In the latter, a hover exposes a pin button. This creates one large plot, to which selected companies can be added. Hovering the large plot exposes a close button, which restores the selected companies to thumbnail form. These operations provide a reasonable simulation of data exploration using React and Recharts. 
+At the frontend the `Randomise Tariffs` button fetches a new index (which creates a new set of countries, companies and forecasts), and a `Group Forecasts` toggle which routes between two pages, one where every company in a country has its forecasts grouped into one plot, and another where companies' forecasts are displayed as thumbnail plots. In the latter, a hover exposes a pin button. This creates one large plot, to which selected companies can be added. Hovering the large plot exposes a close button, which restores the selected companies to thumbnail form. These operations provide a reasonable simulation of data exploration using React and Recharts. 
 
 State is held in a React Context hook.
 
