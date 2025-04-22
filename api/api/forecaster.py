@@ -27,7 +27,7 @@ class Spec:
 
     @staticmethod
     def decode(encoded_spec):
-        mult, floor, *remainder = np.frombuffer(base64.urlsafe_b64decode(encoded_spec), dtype=np.float16)
+        mult, floor, *remainder = np.frombuffer(base64.urlsafe_b64decode(encoded_spec), dtype=np.float16).astype(np.float64)
         cycle_spec=[]
         while len(remainder):
             cycles, offset, amplitude, *remainder = remainder
@@ -36,7 +36,7 @@ class Spec:
 
     @staticmethod
     def to_series(spec, days:int=365, samples:int|None=None):
-        total_seconds = timedelta(days=days).total_seconds()
+        total_seconds = int(timedelta(days=days).total_seconds())
         x = np.linspace(0, total_seconds, total_seconds if samples is None else samples)
         multiplier, floor_val, params = spec
         y = np.zeros_like(x)
@@ -77,6 +77,7 @@ class Forecast:
     @staticmethod
     def load_synset(pos):
         import nltk
+        nltk.download('wordnet')
         words = sum([ss.lemma_names() for ss in nltk.corpus.wordnet.all_synsets(pos)], [])
         return [s for s in words if '-' not in s and '_' not in s and s.lower()==s]
 
