@@ -4,6 +4,12 @@ This demonstrator uses Numpy and FastAPI on the backend, with React, NextJS, and
 
 <img src="./img/tariffic.png" width="800" />
 
+## Docker Compose
+
+Clone this repository, install Docker, run `docker-compose up`, then visit http://localhost:3000 for the UI and http://localhost:8000/docs for the API.
+
+Python package installation of `nltk` is slow. First call to the index route will pull down wordnet data, also slow; subsequent calls use a cached version.
+
 ## UI
 
 At the frontend the `Randomise Tariffs` button fetches a new index (which creates a new set of countries, companies and forecasts), and a `Group Forecasts` toggle which routes between two pages, one where every company in a country has it's forecasts grouped into one plot, and another where companies' forecasts are displayed as thumbnail plots. In the latter, a hover exposes a pin button. This creates one large plot, to which selected companies can be added. Hovering the large plot exposes a close button, which restores the selected companies to thumbnail form. These operations provide a reasonable simulation of data exploration using React and Recharts. 
@@ -16,7 +22,7 @@ CSS is hand-rolled (including animations), icons are emoji, and the layout is re
 
 ## API
 
-The backend has two very simple routes.
+The backend has two routes.
 
 ### Forecast Index
 

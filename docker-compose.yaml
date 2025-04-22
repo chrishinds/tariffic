@@ -1,0 +1,19 @@
+services:
+  node:
+    image: "node:22"
+    working_dir: /home/node/app
+    environment:
+      - NODE_ENV=development
+    ports:
+      - 3000:3000
+    volumes:
+      - ./ui:/home/node/app
+    command: sh -c "rm -rf /home/node/app/node_modules && npm install && npm run dev "
+  python:
+    image: "python:3.12"
+    working_dir: /home/python/app
+    ports:
+      - 8000:8000
+    volumes:
+      - ./api:/home/python/app
+    command: sh -c "rm -rf /home/python/app/cache/* && mkdir -p /home/python/app/cache && pip install -r requirements.txt && fastapi run api/main.py"
